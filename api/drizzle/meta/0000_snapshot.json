@@ -1,0 +1,207 @@
+{
+  "id": "073b032d-bbc9-4f58-9e27-782367ea20a2",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.empleados": {
+      "name": "empleados",
+      "schema": "",
+      "columns": {
+        "id_empleado": {
+          "name": "id_empleado",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "numero_empleado": {
+          "name": "numero_empleado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "apellido_paterno": {
+          "name": "apellido_paterno",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "apellido_materno": {
+          "name": "apellido_materno",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "puesto": {
+          "name": "puesto",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.reporte_impresores": {
+      "name": "reporte_impresores",
+      "schema": "",
+      "columns": {
+        "id_reporte": {
+          "name": "id_reporte",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "plotter": {
+          "name": "plotter",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "wo": {
+          "name": "wo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "style": {
+          "name": "style",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "roster": {
+          "name": "roster",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process": {
+          "name": "process",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order_qty": {
+          "name": "order_qty",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imp_qty": {
+          "name": "imp_qty",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_disena": {
+          "name": "id_disena",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_impresor": {
+          "name": "id_impresor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fecha_emb": {
+          "name": "fecha_emb",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha_imp": {
+          "name": "fecha_imp",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hora_imp": {
+          "name": "hora_imp",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parcial": {
+          "name": "parcial",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reporte_impresores_id_disena_empleados_id_empleado_fk": {
+          "name": "reporte_impresores_id_disena_empleados_id_empleado_fk",
+          "tableFrom": "reporte_impresores",
+          "tableTo": "empleados",
+          "columnsFrom": [
+            "id_disena"
+          ],
+          "columnsTo": [
+            "id_empleado"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "reporte_impresores_id_impresor_empleados_id_empleado_fk": {
+          "name": "reporte_impresores_id_impresor_empleados_id_empleado_fk",
+          "tableFrom": "reporte_impresores",
+          "tableTo": "empleados",
+          "columnsFrom": [
+            "id_impresor"
+          ],
+          "columnsTo": [
+            "id_empleado"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
