@@ -2,7 +2,7 @@ CREATE TABLE reporte_impresores(
     id_reporte INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 
     plotter VARCHAR(100) NOT NULL,
-    wo INTEGER(100) NOT NULL,
+    wo INTEGER NOT NULL,
     style VARCHAR(100) NOT NULL,
     roster VARCHAR(100),
     process VARCHAR(100),
