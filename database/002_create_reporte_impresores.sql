@@ -5,17 +5,17 @@ CREATE TABLE reporte_impresores(
     wo INTEGER NOT NULL,
     style VARCHAR(100) NOT NULL,
     roster VARCHAR(100),
-    process VARCHAR(100),
+    process VARCHAR(100) NOT NULL,
 
-    order_qty INTEGER,
-    imp_qty INTEGER,
+    order_qty INTEGER NOT NULL,
+    imp_qty INTEGER NOT NULL,
 
-    id_disenador INTEGER,
-    id_impresor INTEGER,
+    id_disenador INTEGER NOT NULL,
+    id_impresor INTEGER NOT NULL,
 
-    fecha_emb DATE,
-    fecha_imp DATE,
-    hora_imp TIME,
+    fecha_emb DATE NOT NULL,
+    fecha_imp DATE NOT NULL,
+    hora_imp TIME NOT NULL,
 
     parcial BOOLEAN NOT NULL DEFAULT FALSE,
     activo BOOLEAN NOT NULL DEFAULT TRUE,

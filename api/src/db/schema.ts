@@ -1,8 +1,8 @@
 // Importar las funciones necesarias de Drizzle ORM.
 import { pgTable, integer, varchar, boolean, date, time} from "drizzle-orm/pg-core";
-// relations es una función que permite definir relaciones entre tablas en Drizzle ORM.
-import { relations } from "drizzle-orm";
 
+
+// Definir la tabla "empleados" con sus columnas y tipos de datos.
 export const empleados = pgTable ("empleados", {
     idEmpleado: integer("id_empleado")
         .generatedAlwaysAsIdentity()
@@ -12,9 +12,10 @@ export const empleados = pgTable ("empleados", {
     apellidoPaterno: varchar("apellido_paterno", { length: 100 }).notNull(),
     apellidoMaterno: varchar("apellido_materno", { length: 100 }).notNull(),
     puesto: varchar("puesto", { length: 100 }).notNull(),
-    activo: boolean("activo").notNull().default(true)
+    activo: boolean("activo").notNull().default(true),
 });
 
+// Definir la relación entre la tabla "empleados" y la tabla "reporte_impresores".
 export const reporteImpresores = pgTable("reporte_impresores",{
     idReporte: integer("id_reporte")
         .generatedAlwaysAsIdentity()
@@ -29,10 +30,25 @@ export const reporteImpresores = pgTable("reporte_impresores",{
     orderQty: integer("order_qty").notNull(),
     impQty: integer("imp_qty").notNull(),
 
-    idDisenador: integer("id_disenador").notNull(),
-    idImpresor: integer("id_impresor").notNull(),
+    //Agregar referencias a las llaves foraneas de la tabla empleados
+    idDisenador: integer("id_disenador")
+        .notNull()
+        .references(() => empleados.idEmpleado),
+    
+    idImpresor: integer("id_impresor")
+        .notNull()
+        .references(() => empleados.idEmpleado),
 
     fechaEmb: date("fecha_emb").notNull(),
     fechaImp: date("fecha_imp").notNull(),
     horaImp: time("hora_imp").notNull(),
+
+    parcial: boolean("parcial").notNull().default(false),
+    activo: boolean("activo").notNull().default(true),
 });
+
+export type Empleado = typeof empleados.$inferSelect;
+export type NuevoEmpleado = typeof empleados.$inferInsert;
+
+export type ReporteImpresor = typeof reporteImpresores.$inferSelect;
+export type NuevoReporteImpresor = typeof reporteImpresores.$inferInsert;
