@@ -7,10 +7,10 @@ export const empleados = pgTable ("empleados", {
     idEmpleado: integer("id_empleado")
         .generatedAlwaysAsIdentity()
         .primaryKey(),
-
+    numeroEmpleado: integer("numero_empleado").notNull(),
     nombre: varchar("nombre", { length: 100 }).notNull(),
     apellidoPaterno: varchar("apellido_paterno", { length: 100 }).notNull(),
-    apellidoMaterno: varchar("apellido_materno", { length: 100 }).notNull(),
+    apellidoMaterno: varchar("apellido_materno", { length: 100 }),
     puesto: varchar("puesto", { length: 100 }).notNull(),
     activo: boolean("activo").notNull().default(true),
 });
