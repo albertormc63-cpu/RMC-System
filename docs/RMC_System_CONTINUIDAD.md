@@ -221,9 +221,9 @@ Objetivo: dejar lista la base técnica antes de construir la interfaz.
 - [x] Generar una migración inicial correcta.
 - [x] Inspeccionar el SQL generado antes de aplicarlo.
 - [x] Aplicar la migración y verificar las tablas reales.
-- [ ] Comprobar consultas a través de Drizzle.
-- [ ] Organizar la API (`app.ts`, `server.ts`, rutas y servicios).
-- [ ] Probar las rutas iniciales.
+- [x] Comprobar consultas a través de Drizzle.
+- [x] Organizar la API (`app.ts`, `server.ts`, rutas y servicios).
+- [x] Probar las rutas iniciales.
 
 **Incidente a revisar:** la primera migración generada no incluía `numero_empleado` y hacía `apellido_materno NOT NULL`, aunque el modelo acordado requiere lo contrario. El usuario borró el contenido de `api/drizzle/` y volvió a generar la migración para evitar archivos duplicados. En el siguiente chat, NO asumir que el problema quedó resuelto: inspeccionar el `schema.ts` actual y la migración recién generada. Si las migraciones todavía no se han aplicado, verificar los archivos antes de ejecutar cualquier migración. No borrar metadatos de Drizzle como rutina.
 
