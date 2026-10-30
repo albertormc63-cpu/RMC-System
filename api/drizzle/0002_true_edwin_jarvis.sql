@@ -1,0 +1,4 @@
+ALTER TABLE "empleados" ADD COLUMN "id_puesto" integer;--> statement-breakpoint
+ALTER TABLE "empleados" ADD COLUMN "id_departamento" integer;--> statement-breakpoint
+ALTER TABLE "empleados" ADD CONSTRAINT "empleados_id_puesto_c_puestos_id_puesto_fk" FOREIGN KEY ("id_puesto") REFERENCES "public"."c_puestos"("id_puesto") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "empleados" ADD CONSTRAINT "empleados_id_departamento_c_departamentos_id_departamento_fk" FOREIGN KEY ("id_departamento") REFERENCES "public"."c_departamentos"("id_departamento") ON DELETE no action ON UPDATE no action;

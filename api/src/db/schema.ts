@@ -11,6 +11,12 @@ export const empleados = pgTable ("empleados", {
     nombre: varchar("nombre", { length: 100 }).notNull(),
     apellidoPaterno: varchar("apellido_paterno", { length: 100 }).notNull(),
     apellidoMaterno: varchar("apellido_materno", { length: 100 }),
+    
+    idPuesto: integer("id_puesto")
+        .references(() => cPuestos.idPuesto),
+    idDepartamento: integer("id_departamento")
+        .references(() => cDepartamentos.idDepartamento),
+
     puesto: varchar("puesto", { length: 100 }).notNull(),
     activo: boolean("activo").notNull().default(true),
 });
@@ -45,6 +51,36 @@ export const reporteImpresores = pgTable("reporte_impresores",{
 
     parcial: boolean("parcial").notNull().default(false),
     activo: boolean("activo").notNull().default(true),
+});
+
+export const cPuestos = pgTable("c_puestos",{
+    idPuesto: integer("id_puesto")
+        .generatedAlwaysAsIdentity()
+        .primaryKey(),
+    nombre: varchar("nombre", {length: 100})
+        .notNull()
+        .unique(),
+    
+    descripcion: varchar("descripcion", { length: 255 }),
+
+    activo: boolean("activo")
+        .notNull()
+        .default(true),
+});
+
+export const cDepartamentos = pgTable("c_departamentos", {
+    idDepartamento: integer("id_departamento")
+        .generatedAlwaysAsIdentity()
+        .primaryKey(),
+    nombre: varchar("nombre", { length: 100 })
+        .notNull()
+        .unique(),
+    
+    descripcion: varchar("descripcion", { length:255 }),
+
+    activo: boolean("activo")
+        .notNull()
+        .default(true),
 });
 
 export type Empleado = typeof empleados.$inferSelect;

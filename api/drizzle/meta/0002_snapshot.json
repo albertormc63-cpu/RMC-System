@@ -1,0 +1,382 @@
+{
+  "id": "4e1764b2-cb03-44cf-baad-55ea47db4477",
+  "prevId": "6abea6d1-5fde-4669-85a9-206bb53083da",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.c_departamentos": {
+      "name": "c_departamentos",
+      "schema": "",
+      "columns": {
+        "id_departamento": {
+          "name": "id_departamento",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "c_departamentos_id_departamento_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "descripcion": {
+          "name": "descripcion",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "c_departamentos_nombre_unique": {
+          "name": "c_departamentos_nombre_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "nombre"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.c_puestos": {
+      "name": "c_puestos",
+      "schema": "",
+      "columns": {
+        "id_puesto": {
+          "name": "id_puesto",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "c_puestos_id_puesto_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "descripcion": {
+          "name": "descripcion",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "c_puestos_nombre_unique": {
+          "name": "c_puestos_nombre_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "nombre"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.empleados": {
+      "name": "empleados",
+      "schema": "",
+      "columns": {
+        "id_empleado": {
+          "name": "id_empleado",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "empleados_id_empleado_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "numero_empleado": {
+          "name": "numero_empleado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "apellido_paterno": {
+          "name": "apellido_paterno",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "apellido_materno": {
+          "name": "apellido_materno",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_puesto": {
+          "name": "id_puesto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_departamento": {
+          "name": "id_departamento",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "puesto": {
+          "name": "puesto",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "empleados_id_puesto_c_puestos_id_puesto_fk": {
+          "name": "empleados_id_puesto_c_puestos_id_puesto_fk",
+          "tableFrom": "empleados",
+          "tableTo": "c_puestos",
+          "columnsFrom": [
+            "id_puesto"
+          ],
+          "columnsTo": [
+            "id_puesto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "empleados_id_departamento_c_departamentos_id_departamento_fk": {
+          "name": "empleados_id_departamento_c_departamentos_id_departamento_fk",
+          "tableFrom": "empleados",
+          "tableTo": "c_departamentos",
+          "columnsFrom": [
+            "id_departamento"
+          ],
+          "columnsTo": [
+            "id_departamento"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.reporte_impresores": {
+      "name": "reporte_impresores",
+      "schema": "",
+      "columns": {
+        "id_reporte": {
+          "name": "id_reporte",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "reporte_impresores_id_reporte_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "plotter": {
+          "name": "plotter",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "wo": {
+          "name": "wo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "style": {
+          "name": "style",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "roster": {
+          "name": "roster",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process": {
+          "name": "process",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order_qty": {
+          "name": "order_qty",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imp_qty": {
+          "name": "imp_qty",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_disenador": {
+          "name": "id_disenador",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_impresor": {
+          "name": "id_impresor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha_emb": {
+          "name": "fecha_emb",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha_imp": {
+          "name": "fecha_imp",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hora_imp": {
+          "name": "hora_imp",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parcial": {
+          "name": "parcial",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reporte_impresores_id_disenador_empleados_id_empleado_fk": {
+          "name": "reporte_impresores_id_disenador_empleados_id_empleado_fk",
+          "tableFrom": "reporte_impresores",
+          "tableTo": "empleados",
+          "columnsFrom": [
+            "id_disenador"
+          ],
+          "columnsTo": [
+            "id_empleado"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "reporte_impresores_id_impresor_empleados_id_empleado_fk": {
+          "name": "reporte_impresores_id_impresor_empleados_id_empleado_fk",
+          "tableFrom": "reporte_impresores",
+          "tableTo": "empleados",
+          "columnsFrom": [
+            "id_impresor"
+          ],
+          "columnsTo": [
+            "id_empleado"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -8,6 +8,20 @@
       "when": 1792677524150,
       "tag": "0000_iniciar-schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793308280617,
+      "tag": "0001_legal_wallow",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793389403754,
+      "tag": "0002_true_edwin_jarvis",
+      "breakpoints": true
     }
   ]
 }
