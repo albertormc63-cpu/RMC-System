@@ -19,7 +19,12 @@ const empleadosRoutes: FastifyPluginAsync = async (app) => {
             idEmpleado: empleados.idEmpleado,
             numeroEmpleado: empleados.numeroEmpleado,
             //usamos sql<string> para concatenar el nombre completo del empleado
-            nombreCompleto: sql<string> `CONCAT_WS(' ', ${empleados.nombre}, ${empleados.apellidoPaterno}, ${empleados.apellidoMaterno})`,
+            nombreCompleto: sql<string> 
+                `CONCAT_WS(' ',
+                 ${empleados.nombre},
+                 ${empleados.apellidoPaterno},
+                 ${empleados.apellidoMaterno})
+                 `,
             puesto: cPuestos.nombre,
             departamento: cDepartamentos.nombre,
             activo: empleados.activo
