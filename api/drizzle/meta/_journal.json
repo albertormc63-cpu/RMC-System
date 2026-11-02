@@ -22,6 +22,13 @@
       "when": 1793389403754,
       "tag": "0002_true_edwin_jarvis",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793393708007,
+      "tag": "0003_silly_molecule_man",
+      "breakpoints": true
     }
   ]
 }

@@ -13,11 +13,12 @@ export const empleados = pgTable ("empleados", {
     apellidoMaterno: varchar("apellido_materno", { length: 100 }),
     
     idPuesto: integer("id_puesto")
+        .notNull()
         .references(() => cPuestos.idPuesto),
     idDepartamento: integer("id_departamento")
+        .notNull()
         .references(() => cDepartamentos.idDepartamento),
 
-    puesto: varchar("puesto", { length: 100 }).notNull(),
     activo: boolean("activo").notNull().default(true),
 });
 
